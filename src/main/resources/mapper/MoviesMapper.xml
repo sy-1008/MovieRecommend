@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjfu.suyi.movie.mapper.MoviesMapper">
+  <resultMap id="BaseResultMap" type="com.bjfu.suyi.movie.model.Movies">
+    <!--@mbg.generated-->
+    <!--@Table movies-->
+    <id column="n_id" jdbcType="INTEGER" property="nId" />
+    <result column="c_name" jdbcType="VARCHAR" property="cName" />
+    <result column="n_film_length" jdbcType="INTEGER" property="nFilmLength" />
+    <result column="d_release_date" jdbcType="TIMESTAMP" property="dReleaseDate" />
+    <result column="c_info" jdbcType="VARCHAR" property="cInfo" />
+    <result column="c_movie_type" jdbcType="VARCHAR" property="cMovieType" />
+    <result column="c_movie_language" jdbcType="VARCHAR" property="cMovieLanguage" />
+    <result column="c_movie_cover" jdbcType="VARCHAR" property="cMovieCover" />
+    <result column="f_movie_score" jdbcType="DOUBLE" property="fMovieScore" />
+    <result column="n_is_hot" jdbcType="INTEGER" property="nIsHot" />
+    <result column="n_views" jdbcType="INTEGER" property="nViews" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    n_id, c_name, n_film_length, d_release_date, c_info, c_movie_type, c_movie_language, 
+    c_movie_cover, f_movie_score, n_is_hot, n_views
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from movies
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from movies
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="n_id" keyProperty="nId" parameterType="com.bjfu.suyi.movie.model.Movies" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into movies (c_name, n_film_length, d_release_date, 
+      c_info, c_movie_type, c_movie_language, 
+      c_movie_cover, f_movie_score, n_is_hot, 
+      n_views)
+    values (#{cName,jdbcType=VARCHAR}, #{nFilmLength,jdbcType=INTEGER}, #{dReleaseDate,jdbcType=TIMESTAMP}, 
+      #{cInfo,jdbcType=VARCHAR}, #{cMovieType,jdbcType=VARCHAR}, #{cMovieLanguage,jdbcType=VARCHAR}, 
+      #{cMovieCover,jdbcType=VARCHAR}, #{fMovieScore,jdbcType=DOUBLE}, #{nIsHot,jdbcType=INTEGER}, 
+      #{nViews,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="n_id" keyProperty="nId" parameterType="com.bjfu.suyi.movie.model.Movies" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into movies
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cName != null">
+        c_name,
+      </if>
+      <if test="nFilmLength != null">
+        n_film_length,
+      </if>
+      <if test="dReleaseDate != null">
+        d_release_date,
+      </if>
+      <if test="cInfo != null">
+        c_info,
+      </if>
+      <if test="cMovieType != null">
+        c_movie_type,
+      </if>
+      <if test="cMovieLanguage != null">
+        c_movie_language,
+      </if>
+      <if test="cMovieCover != null">
+        c_movie_cover,
+      </if>
+      <if test="fMovieScore != null">
+        f_movie_score,
+      </if>
+      <if test="nIsHot != null">
+        n_is_hot,
+      </if>
+      <if test="nViews != null">
+        n_views,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cName != null">
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="nFilmLength != null">
+        #{nFilmLength,jdbcType=INTEGER},
+      </if>
+      <if test="dReleaseDate != null">
+        #{dReleaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cInfo != null">
+        #{cInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="cMovieType != null">
+        #{cMovieType,jdbcType=VARCHAR},
+      </if>
+      <if test="cMovieLanguage != null">
+        #{cMovieLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="cMovieCover != null">
+        #{cMovieCover,jdbcType=VARCHAR},
+      </if>
+      <if test="fMovieScore != null">
+        #{fMovieScore,jdbcType=DOUBLE},
+      </if>
+      <if test="nIsHot != null">
+        #{nIsHot,jdbcType=INTEGER},
+      </if>
+      <if test="nViews != null">
+        #{nViews,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bjfu.suyi.movie.model.Movies">
+    <!--@mbg.generated-->
+    update movies
+    <set>
+      <if test="cName != null">
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="nFilmLength != null">
+        n_film_length = #{nFilmLength,jdbcType=INTEGER},
+      </if>
+      <if test="dReleaseDate != null">
+        d_release_date = #{dReleaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cInfo != null">
+        c_info = #{cInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="cMovieType != null">
+        c_movie_type = #{cMovieType,jdbcType=VARCHAR},
+      </if>
+      <if test="cMovieLanguage != null">
+        c_movie_language = #{cMovieLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="cMovieCover != null">
+        c_movie_cover = #{cMovieCover,jdbcType=VARCHAR},
+      </if>
+      <if test="fMovieScore != null">
+        f_movie_score = #{fMovieScore,jdbcType=DOUBLE},
+      </if>
+      <if test="nIsHot != null">
+        n_is_hot = #{nIsHot,jdbcType=INTEGER},
+      </if>
+      <if test="nViews != null">
+        n_views = #{nViews,jdbcType=INTEGER},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bjfu.suyi.movie.model.Movies">
+    <!--@mbg.generated-->
+    update movies
+    set c_name = #{cName,jdbcType=VARCHAR},
+      n_film_length = #{nFilmLength,jdbcType=INTEGER},
+      d_release_date = #{dReleaseDate,jdbcType=TIMESTAMP},
+      c_info = #{cInfo,jdbcType=VARCHAR},
+      c_movie_type = #{cMovieType,jdbcType=VARCHAR},
+      c_movie_language = #{cMovieLanguage,jdbcType=VARCHAR},
+      c_movie_cover = #{cMovieCover,jdbcType=VARCHAR},
+      f_movie_score = #{fMovieScore,jdbcType=DOUBLE},
+      n_is_hot = #{nIsHot,jdbcType=INTEGER},
+      n_views = #{nViews,jdbcType=INTEGER}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+</mapper>

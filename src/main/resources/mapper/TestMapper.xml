@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjfu.suyi.movie.mapper.TestMapper">
+  <resultMap id="BaseResultMap" type="com.bjfu.suyi.movie.model.Test">
+    <!--@mbg.generated-->
+    <!--@Table test-->
+    <id column="n_id" jdbcType="INTEGER" property="nId" />
+    <result column="c_ques" jdbcType="VARCHAR" property="cQues" />
+    <result column="c_answer1" jdbcType="VARCHAR" property="cAnswer1" />
+    <result column="c_answer3" jdbcType="VARCHAR" property="cAnswer3" />
+    <result column="c_answer" jdbcType="VARCHAR" property="cAnswer" />
+    <result column="c_answer2" jdbcType="VARCHAR" property="cAnswer2" />
+    <result column="n_score" jdbcType="INTEGER" property="nScore" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    n_id, c_ques, c_answer1, c_answer3, c_answer, c_answer2, n_score
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from test
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from test
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="n_id" keyProperty="nId" parameterType="com.bjfu.suyi.movie.model.Test" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into test (c_ques, c_answer1, c_answer3, 
+      c_answer, c_answer2, n_score
+      )
+    values (#{cQues,jdbcType=VARCHAR}, #{cAnswer1,jdbcType=VARCHAR}, #{cAnswer3,jdbcType=VARCHAR}, 
+      #{cAnswer,jdbcType=VARCHAR}, #{cAnswer2,jdbcType=VARCHAR}, #{nScore,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="n_id" keyProperty="nId" parameterType="com.bjfu.suyi.movie.model.Test" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into test
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cQues != null">
+        c_ques,
+      </if>
+      <if test="cAnswer1 != null">
+        c_answer1,
+      </if>
+      <if test="cAnswer3 != null">
+        c_answer3,
+      </if>
+      <if test="cAnswer != null">
+        c_answer,
+      </if>
+      <if test="cAnswer2 != null">
+        c_answer2,
+      </if>
+      <if test="nScore != null">
+        n_score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cQues != null">
+        #{cQues,jdbcType=VARCHAR},
+      </if>
+      <if test="cAnswer1 != null">
+        #{cAnswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="cAnswer3 != null">
+        #{cAnswer3,jdbcType=VARCHAR},
+      </if>
+      <if test="cAnswer != null">
+        #{cAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="cAnswer2 != null">
+        #{cAnswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="nScore != null">
+        #{nScore,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bjfu.suyi.movie.model.Test">
+    <!--@mbg.generated-->
+    update test
+    <set>
+      <if test="cQues != null">
+        c_ques = #{cQues,jdbcType=VARCHAR},
+      </if>
+      <if test="cAnswer1 != null">
+        c_answer1 = #{cAnswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="cAnswer3 != null">
+        c_answer3 = #{cAnswer3,jdbcType=VARCHAR},
+      </if>
+      <if test="cAnswer != null">
+        c_answer = #{cAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="cAnswer2 != null">
+        c_answer2 = #{cAnswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="nScore != null">
+        n_score = #{nScore,jdbcType=INTEGER},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bjfu.suyi.movie.model.Test">
+    <!--@mbg.generated-->
+    update test
+    set c_ques = #{cQues,jdbcType=VARCHAR},
+      c_answer1 = #{cAnswer1,jdbcType=VARCHAR},
+      c_answer3 = #{cAnswer3,jdbcType=VARCHAR},
+      c_answer = #{cAnswer,jdbcType=VARCHAR},
+      c_answer2 = #{cAnswer2,jdbcType=VARCHAR},
+      n_score = #{nScore,jdbcType=INTEGER}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+</mapper>

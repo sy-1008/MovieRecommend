@@ -1,0 +1,218 @@
+{
+  "item": [
+    {
+      "request": {
+        "method": "GET",
+        "description": "电影列表展示",
+        "header": [],
+        "url": {
+          "path": [
+            "showMoviesList"
+          ],
+          "query": [],
+          "host": "{{MovieRecommend}}",
+          "raw": "{{MovieRecommend}}/showMoviesList"
+        }
+      },
+      "response": [
+        {
+          "originalRequest": {
+            "method": "GET",
+            "description": "电影列表展示",
+            "header": [],
+            "url": {
+              "path": [
+                "showMoviesList"
+              ],
+              "query": [],
+              "host": "{{MovieRecommend}}",
+              "raw": "{{MovieRecommend}}/showMoviesList"
+            }
+          },
+          "_postman_previewlanguage": "json",
+          "code": 200,
+          "_postman_previewtype": "text",
+          "responseTime": 64,
+          "name": "电影列表展示-Example",
+          "header": [
+            {
+              "name": "date",
+              "key": "date",
+              "value": "周三, 28 4月 202119:00:13 GMT",
+              "description": "The date and time that the message was sent"
+            },
+            {
+              "name": "server",
+              "key": "server",
+              "value": "Apache-Coyote/1.1",
+              "description": "A name for the server"
+            },
+            {
+              "name": "transfer-encoding",
+              "key": "transfer-encoding",
+              "value": "chunked",
+              "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+            },
+            {
+              "name": "content-type",
+              "key": "content-type",
+              "value": "application/json;charset\u003dUTF-8"
+            }
+          ],
+          "body": "[\r\n    {\r\n        \"nId\": 0,\r\n        \"cName\": \"\",\r\n        \"nFilmLength\": 0, //电影时长\r\n        \"dReleaseDate\": \"\", //上映时间\r\n        \"cInfo\": \"\", //影片简介\r\n        \"cMovieType\": \"\", //影片类型\r\n        \"cMovieLanguage\": \"\", //影片语言\r\n        \"cMovieCover\": \"\",\r\n        \"fMovieScore\": 0.0, //电影评分\r\n        \"nIsHot\": 0, //热门电影1\r\n        \"nViews\": 0 //电影观看次数\r\n    }\r\n]",
+          "status": "OK"
+        }
+      ],
+      "name": "电影列表展示"
+    },
+    {
+      "request": {
+        "method": "GET",
+        "description": "热门电影展示",
+        "header": [],
+        "url": {
+          "path": [
+            "findHotMovies"
+          ],
+          "query": [],
+          "host": "{{MovieRecommend}}",
+          "raw": "{{MovieRecommend}}/findHotMovies"
+        }
+      },
+      "response": [
+        {
+          "originalRequest": {
+            "method": "GET",
+            "description": "热门电影展示",
+            "header": [],
+            "url": {
+              "path": [
+                "findHotMovies"
+              ],
+              "query": [],
+              "host": "{{MovieRecommend}}",
+              "raw": "{{MovieRecommend}}/findHotMovies"
+            }
+          },
+          "_postman_previewlanguage": "json",
+          "code": 200,
+          "_postman_previewtype": "text",
+          "responseTime": 56,
+          "name": "热门电影展示-Example",
+          "header": [
+            {
+              "name": "date",
+              "key": "date",
+              "value": "周三, 28 4月 202119:00:13 GMT",
+              "description": "The date and time that the message was sent"
+            },
+            {
+              "name": "server",
+              "key": "server",
+              "value": "Apache-Coyote/1.1",
+              "description": "A name for the server"
+            },
+            {
+              "name": "transfer-encoding",
+              "key": "transfer-encoding",
+              "value": "chunked",
+              "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+            },
+            {
+              "name": "content-type",
+              "key": "content-type",
+              "value": "application/json;charset\u003dUTF-8"
+            }
+          ],
+          "body": "{\r\n    \"status\": 0, //服务端响应到客户端的数据状态\r\n    \"msg\": \"\", //状态对应的具体数据\r\n    \"data\": [ //响应到客户端的具体数据\r\n        {\r\n            \"nId\": 0,\r\n            \"cName\": \"\",\r\n            \"nFilmLength\": 0, //电影时长\r\n            \"dReleaseDate\": \"\", //上映时间\r\n            \"cInfo\": \"\", //影片简介\r\n            \"cMovieType\": \"\", //影片类型\r\n            \"cMovieLanguage\": \"\", //影片语言\r\n            \"cMovieCover\": \"\",\r\n            \"fMovieScore\": 0.0, //电影评分\r\n            \"nIsHot\": 0, //热门电影1\r\n            \"nViews\": 0 //电影观看次数\r\n        }\r\n    ]\r\n}",
+          "status": "OK"
+        }
+      ],
+      "name": "热门电影展示"
+    },
+    {
+      "request": {
+        "method": "GET",
+        "description": "查看电影详情",
+        "header": [],
+        "url": {
+          "path": [
+            "getMovieDetail"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "0",
+              "equals": true,
+              "description": ""
+            }
+          ],
+          "host": "{{MovieRecommend}}",
+          "raw": "{{MovieRecommend}}/getMovieDetail"
+        }
+      },
+      "response": [
+        {
+          "originalRequest": {
+            "method": "GET",
+            "description": "查看电影详情",
+            "header": [],
+            "url": {
+              "path": [
+                "getMovieDetail"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "0",
+                  "equals": true,
+                  "description": ""
+                }
+              ],
+              "host": "{{MovieRecommend}}",
+              "raw": "{{MovieRecommend}}/getMovieDetail"
+            }
+          },
+          "_postman_previewlanguage": "json",
+          "code": 200,
+          "_postman_previewtype": "text",
+          "responseTime": 15,
+          "name": "查看电影详情-Example",
+          "header": [
+            {
+              "name": "date",
+              "key": "date",
+              "value": "周三, 28 4月 202119:00:13 GMT",
+              "description": "The date and time that the message was sent"
+            },
+            {
+              "name": "server",
+              "key": "server",
+              "value": "Apache-Coyote/1.1",
+              "description": "A name for the server"
+            },
+            {
+              "name": "transfer-encoding",
+              "key": "transfer-encoding",
+              "value": "chunked",
+              "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+            },
+            {
+              "name": "content-type",
+              "key": "content-type",
+              "value": "application/json;charset\u003dUTF-8"
+            }
+          ],
+          "body": "{\r\n    \"status\": 0, //服务端响应到客户端的数据状态\r\n    \"msg\": \"\", //状态对应的具体数据\r\n    \"data\": { //响应到客户端的具体数据\r\n        \"nId\": 0,\r\n        \"cName\": \"\",\r\n        \"nFilmLength\": 0, //电影时长\r\n        \"dReleaseDate\": \"\", //上映时间\r\n        \"cInfo\": \"\", //影片简介\r\n        \"cMovieType\": \"\", //影片类型\r\n        \"cMovieLanguage\": \"\", //影片语言\r\n        \"cMovieCover\": \"\",\r\n        \"fMovieScore\": 0.0, //电影评分\r\n        \"nIsHot\": 0, //热门电影1\r\n        \"nViews\": 0 //电影观看次数\r\n    }\r\n}",
+          "status": "OK"
+        }
+      ],
+      "name": "查看电影详情"
+    }
+  ],
+  "info": {
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "name": "MovieController-20210428190013",
+    "description": "MovieController"
+  }
+}
