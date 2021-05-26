@@ -68,6 +68,25 @@ public class MoviesServiceImpl implements MoviesService {
         }
         return SverResponse.createRespBySuccess(movies);
     }
+
+    @Override
+    public SverResponse<List<Movies>> getMovieListByType(String type) {
+        return SverResponse.createRespBySuccess(moviesMapper.getMovieListByType(type));
+    }
+
+    @Override
+    public SverResponse<String> addMovie(Movies movies) {
+         moviesMapper.insert(movies);
+        return SverResponse.createRespBySuccess("增加电影成功");
+    }
+
+    @Override
+    public SverResponse<String> deleteMovieById(int id) {
+        moviesMapper.deleteByPrimaryKey(id);
+        return SverResponse.createRespBySuccess("删除电影成功");
+    }
+
+
 }
 
 

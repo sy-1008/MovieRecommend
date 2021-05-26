@@ -159,7 +159,9 @@
              data = JSON.parse(data);
              var code = data.status
              if (code === 0) {
+                 if($(".radio2").val()==1)
                  window.location.href = 'index.html';
+                 else window.location.href = '../MovieRecommend/back/moviehome.html';
                  layer.alert(data.msg);
              } else {
                  layer.alert(data.msg);

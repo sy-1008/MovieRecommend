@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Integer nId);
@@ -32,4 +34,12 @@ public interface UserMapper {
     @Select("select * from user where c_username=#{name}")
     User selectUserByuserName(String name);
 
+    /**
+     * 展示用户列表
+     *
+     * @return
+     */
+    @ResultMap("BaseResultMap")
+    @Select("select * from user")
+    List<User> showUserList();
 }

@@ -3,6 +3,8 @@ package com.bjfu.suyi.movie.service;
 import com.bjfu.suyi.movie.common.pojo.SverResponse;
 import com.bjfu.suyi.movie.model.User;
 
+import java.util.List;
+
 public interface UserService {
 
 
@@ -21,6 +23,8 @@ public interface UserService {
     SverResponse<User> doLogin(String account, String password);
    User selectUserByEmail(String email);
    User selectUserByuserName(String name);
+
+   SverResponse<List<User>> showUserList();
 
 }
 

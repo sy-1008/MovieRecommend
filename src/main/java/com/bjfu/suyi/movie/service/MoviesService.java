@@ -27,6 +27,12 @@ public interface MoviesService {
     SverResponse<List<Movies>> findNewMovies();
 
     SverResponse<Movies> getMovieDetail(int id);
+
+    SverResponse<List<Movies>> getMovieListByType(String type);
+
+    SverResponse<String> addMovie(Movies movies);
+
+    SverResponse<String> deleteMovieById(int id);
 }
 
 

@@ -8,6 +8,8 @@ import com.bjfu.suyi.movie.mapper.UserMapper;
 import com.bjfu.suyi.movie.model.User;
 import com.bjfu.suyi.movie.service.UserService;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -69,6 +71,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User selectUserByuserName(String name) {
         return userMapper.selectUserByuserName(name);
+    }
+
+    @Override
+    public SverResponse<List<User>> showUserList() {
+        return  SverResponse.createRespBySuccess(userMapper.showUserList());
     }
 
 

@@ -44,4 +44,14 @@ public interface MoviesMapper {
     @ResultMap("BaseResultMap")
     @Select("select * from movies where d_release_date>='2021-1-01' ")
     List<Movies> findNewMovies();
+    /**
+     * 分类查看
+     * @return
+     */
+    @ResultMap("BaseResultMap")
+    @Select("select * from movies where c_movie_type=#{type} ")
+    List<Movies> getMovieListByType(String type);
+
+
+
 }

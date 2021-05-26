@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 @RequestMapping(produces = "application/json;charset=UTF-8")
@@ -65,5 +66,14 @@ public class UserController {
 
         userService.insert(user);
         return SverResponse.createRespBySuccessMessage("用户注册成功");
+    }
+
+    /**
+     * 后台用户列表
+     * @return
+     */
+    @RequestMapping(value = "/showUserList", method = RequestMethod.GET)
+    public SverResponse<List<User>> showUserList(){
+        return userService.showUserList();
     }
 }

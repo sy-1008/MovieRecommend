@@ -164,4 +164,5 @@
       n_views = #{nViews,jdbcType=INTEGER}
     where n_id = #{nId,jdbcType=INTEGER}
   </update>
+
 </mapper>
