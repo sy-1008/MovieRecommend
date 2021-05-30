@@ -37,6 +37,10 @@ public interface MoviesMapper {
     @Select("select * from movies where n_is_hot=1")
     List<Movies> findHotMovies();
 
+
+    @ResultMap("BaseResultMap")
+    @Select("select * from movies where c_name LIKE '%${searchName}%' ")
+    List<Movies> showMoviesBySearchName(String searchName);
     /**
      * 最新上线
      * @return

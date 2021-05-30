@@ -70,6 +70,15 @@ public class MoviesServiceImpl implements MoviesService {
     }
 
     @Override
+    public SverResponse<List<Movies>> showMoviesBySearchName(String searchName) {
+        List<Movies> movies = moviesMapper.showMoviesBySearchName(searchName);
+        if (movies == null) {
+            return SverResponse.createByErrorMessage("电影不存在");
+        }
+        return SverResponse.createRespBySuccess(movies);
+    }
+
+    @Override
     public SverResponse<List<Movies>> getMovieListByType(String type) {
         return SverResponse.createRespBySuccess(moviesMapper.getMovieListByType(type));
     }
@@ -78,6 +87,12 @@ public class MoviesServiceImpl implements MoviesService {
     public SverResponse<String> addMovie(Movies movies) {
          moviesMapper.insert(movies);
         return SverResponse.createRespBySuccess("增加电影成功");
+    }
+
+    @Override
+    public SverResponse<String> editMovie(Movies movies) {
+        moviesMapper.updateByPrimaryKey(movies);
+        return SverResponse.createRespBySuccess("编辑电影成功");
     }
 
     @Override

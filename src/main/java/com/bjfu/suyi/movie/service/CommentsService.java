@@ -18,4 +18,7 @@ public interface CommentsService{
     int updateByPrimaryKey(Comments record);
 
     SverResponse<String>createComments(Integer userId,Integer movieId,Comments comments);
+
+    SverResponse<String> deleteComment(int uid,int mid);
+
 }

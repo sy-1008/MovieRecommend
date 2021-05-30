@@ -4,10 +4,7 @@ import com.bjfu.suyi.movie.common.pojo.SverResponse;
 import com.bjfu.suyi.movie.model.User;
 import com.bjfu.suyi.movie.service.UserService;
 import com.bjfu.suyi.movie.utils.ConstUtil;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -21,13 +18,14 @@ public class UserController {
 
     /**
      * 前台用户登录
+     *
      * @param account
      * @param password
      * @param session
      * @return
      */
-    @RequestMapping(value = "do_login",method = RequestMethod.POST)
-    public SverResponse<User>doLogin(String account,String password, HttpSession session){
+    @RequestMapping(value = "do_login", method = RequestMethod.POST)
+    public SverResponse<User> doLogin(String account, String password, HttpSession session) {
         SverResponse<User> response = userService.doLogin(account, password);
         if (response.getData() == null) {
             // user does not exit
@@ -40,24 +38,25 @@ public class UserController {
 
     /**
      * 用户注册
+     *
      * @param username
      * @param email
      * @param phone
      * @param password
      * @return
      */
-    @RequestMapping(value = "do_register",method = RequestMethod.POST)
-    public SverResponse<String> doRegister(String username,String email,String phone,String password){
+    @RequestMapping(value = "do_register", method = RequestMethod.POST)
+    public SverResponse<String> doRegister(String username, String email, String phone, String password) {
 
-        User user1=userService.selectUserByEmail(email);
-        if(user1!=null){
+        User user1 = userService.selectUserByEmail(email);
+        if (user1 != null) {
             return SverResponse.createByErrorMessage("邮箱已存在");
         }
-        User user2=userService.selectUserByuserName(username);
-        if(user2!= null){
+        User user2 = userService.selectUserByuserName(username);
+        if (user2 != null) {
             return SverResponse.createByErrorMessage("用户名已存在");
         }
-        User user=new User();
+        User user = new User();
         user.setCEmail(email);
         user.setCPassword(password);
         user.setCUsername(username);
@@ -70,10 +69,45 @@ public class UserController {
 
     /**
      * 后台用户列表
+     *
      * @return
      */
     @RequestMapping(value = "/showUserList", method = RequestMethod.GET)
-    public SverResponse<List<User>> showUserList(){
+    public SverResponse<List<User>> showUserList() {
         return userService.showUserList();
+    }
+
+    /**
+     * 后台注销用户
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/deleteUserById", method = RequestMethod.GET)
+    @CrossOrigin
+    public SverResponse<String> deleteUserById(@RequestParam("id") int id) {
+        return userService.deleteUserById(id);
+    }
+
+    /**
+     * 查看用户详情
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/getUserDetail", method = RequestMethod.GET)
+    @CrossOrigin
+    public SverResponse<User> getUserDetail(@RequestParam("id") int id){
+        return userService.getUserDetail(id);
+    }
+
+    /**
+     * 后台编辑用户信息
+     * @param user
+     * @return
+     */
+    @RequestMapping(value = "/editUser", method = RequestMethod.POST)
+    @CrossOrigin
+    public SverResponse<String> editUser(@RequestBody User user){
+        return userService.editUser(user);
     }
 }

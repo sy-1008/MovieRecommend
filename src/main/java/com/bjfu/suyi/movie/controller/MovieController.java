@@ -59,32 +59,68 @@ public class MovieController {
     }
 
 
-
     /**
      * 电影分类查看
+     *
      * @return
      */
     @RequestMapping(value = "/getMovieListByType", method = RequestMethod.GET)
-    public SverResponse<List<Movies>> getMovieListByType(@RequestParam("type")String mType) {
+    public SverResponse<List<Movies>> getMovieListByType(@RequestParam("type") String mType) {
 
         return moviesService.getMovieListByType(mType);
     }
 
     /**
      * 后台新增电影
+     *
      * @param movies
      * @return
      */
 
-
     @RequestMapping(value = "/addMovie", method = RequestMethod.POST)
     @CrossOrigin
-    public SverResponse<String> addMovie(@RequestBody Movies movies){
+    public SverResponse<String> addMovie(@RequestBody Movies movies) {
 
         return moviesService.addMovie(movies);
     }
+
+    /**
+     * 后台编辑电影信息
+     *
+     * @param movies
+     * @return
+     */
+    @RequestMapping(value = "/editMovie", method = RequestMethod.POST)
+    @CrossOrigin
+    public SverResponse<String> editMovie(@RequestBody Movies movies) {
+
+        return moviesService.editMovie(movies);
+    }
+
+
+    /**
+     * 后台删除电影
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/deleteMovieById", method = RequestMethod.GET)
     @CrossOrigin
-    public SverResponse<String> deleteMovieById(@RequestParam("id") int id){return moviesService.deleteMovieById(id);}
+    public SverResponse<String> deleteMovieById(@RequestParam("id") int id) {
+        return moviesService.deleteMovieById(id);
+    }
+
+    /**
+     * 后台搜索电影
+     *
+     * @param searchName
+     * @return
+     */
+    @RequestMapping(value = "/showMoviesBySearchName", method = RequestMethod.GET)
+    @CrossOrigin
+    public SverResponse<List<Movies>> showMoviesBySearchName(@RequestParam("searchName") String searchName) {
+        return moviesService.showMoviesBySearchName(searchName);
+    }
+
 
 }

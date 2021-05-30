@@ -57,4 +57,10 @@ public class CommentsServiceImpl implements CommentsService{
         }
         return SverResponse.createByErrorMessage("评论发布失败");
     }
+
+    @Override
+    public SverResponse<String> deleteComment(int uid, int mid) {
+        commentsMapper.deleteComment(uid,mid);
+        return SverResponse.createRespBySuccess("评论删除成功");
+    }
 }

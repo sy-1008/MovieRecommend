@@ -21,10 +21,17 @@ public interface UserService {
     int updateByPrimaryKey(User record);
 
     SverResponse<User> doLogin(String account, String password);
-   User selectUserByEmail(String email);
-   User selectUserByuserName(String name);
 
-   SverResponse<List<User>> showUserList();
+    SverResponse<User> getUserDetail(int id);
 
+    User selectUserByEmail(String email);
+
+    User selectUserByuserName(String name);
+
+    SverResponse<List<User>> showUserList();
+
+    SverResponse<String> deleteUserById(int id);
+
+    SverResponse<String> editUser(User user);
 }
 
