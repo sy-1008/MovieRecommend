@@ -2,10 +2,13 @@ package com.bjfu.suyi.movie.model;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @Builder
@@ -24,6 +27,7 @@ public class Movies implements Serializable {
     /**
      * 上映时间
      */
+
     private Date dReleaseDate;
 
     /**

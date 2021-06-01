@@ -28,6 +28,11 @@ public class User implements Serializable {
 
     private String cUserImage;
 
+    /**
+     * 用户积分
+     */
+    private Integer nScore;
+
     private static final long serialVersionUID = 1L;
 
     public static UserBuilder builder() {

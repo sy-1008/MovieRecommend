@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -121,6 +125,19 @@ public class MovieController {
     public SverResponse<List<Movies>> showMoviesBySearchName(@RequestParam("searchName") String searchName) {
         return moviesService.showMoviesBySearchName(searchName);
     }
+    /**
+     * 前台分类多条件搜索电影
+     *
+     * @param searchName
+     * @return
+     */
+    @RequestMapping(value = "/multiconditionalSearch", method = RequestMethod.GET)
+    @CrossOrigin
+    public SverResponse<List<Movies>> multiconditionalSearch(@RequestParam("searchName") String searchName,
+                                                             @RequestParam("movieType") String movieType,
+                                                             @RequestParam("movieLanguage") String movieLanguage) throws ParseException {
 
 
+        return moviesService.multiconditionalSearch(searchName,movieType,movieLanguage);
+    }
 }

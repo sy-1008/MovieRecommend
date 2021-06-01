@@ -3,7 +3,10 @@ package com.bjfu.suyi.movie.mapper;
 import com.bjfu.suyi.movie.model.Movies;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;import java.util.List;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.Date;
+import java.util.List;
 
 @Mapper
 public interface MoviesMapper {
@@ -41,6 +44,27 @@ public interface MoviesMapper {
     @ResultMap("BaseResultMap")
     @Select("select * from movies where c_name LIKE '%${searchName}%' ")
     List<Movies> showMoviesBySearchName(String searchName);
+
+    @ResultMap("BaseResultMap")
+//    @Select("select * from movies " +
+//            "where movies.c_movie_language LIKE '%${movieLanguage}%'and c_movie_type=#{movieType} and c_name LIKE '%${searchName}%'")
+
+    @Select({"<script>",
+            "SELECT * FROM movies",
+            "WHERE 1=1",
+            "<if test='movieLanguage!=null and movieLanguage!=\"\"'>",
+            "AND movies.c_movie_language LIKE '%${movieLanguage}%'",
+            "</if>",
+            "<if test='movieType!=null and movieType!=\"\"'>",
+            "AND c_movie_type=#{movieType} ",
+            "</if>",
+            "<if test='searchName!=null and searchName!=\"\"'>",
+            "AND c_name LIKE '%${searchName}%'",
+            "</if>",
+            "</script>"})
+
+    List<Movies> multiconditionalSearch(String searchName, String movieType, String movieLanguage);
+
     /**
      * 最新上线
      * @return

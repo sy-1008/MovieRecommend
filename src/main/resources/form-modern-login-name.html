@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-<!--    <link rel="icon" href="assets/images/favicon.png">-->
+    <!--    <link rel="icon" href="assets/images/favicon.png">-->
 
     <!-- CSS
     ================================================== -->
@@ -70,13 +70,14 @@
                                 <span class="uk-form-icon">
                                     <i class="icon-feather-lock"></i>
                                 </span>
-                            <input class="uk-input" name="password" id="password" type="password" placeholder="********">
+                            <input class="uk-input" name="password" id="password" type="password"
+                                   placeholder="********">
                         </div>
 
                     </div>
-                    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                        <label><input  class="uk-radio" type="radio" value="0" name="radio2" checked> 管理员</label>
-                        <label><input  class="uk-radio" type="radio" value="1" name="radio2"> 用户</label>
+                    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid" id="roleradio">
+                        <label><input class="uk-radio" type="radio" value="0" name="radio2" checked> 管理员</label>
+                        <label><input class="uk-radio" type="radio" value="1" name="radio2"> 用户</label>
                     </div>
 
                     <div class="mt-4 uk-flex-middle uk-grid-small" uk-grid>
@@ -145,30 +146,35 @@
 
 <!--Ajax -->
 <script type="text/javascript">
- function login(){
-     $.ajax({
-         url: 'http://localhost:8080/do_login',
-         type: 'post',
-         dataType: 'text',
-         data: {
-             account: $('#userName').val(),
-             password: $('#password').val(),
-             role:$(".radio2").val()
-         },
-         success: function (data) {
-             data = JSON.parse(data);
-             var code = data.status
-             if (code === 0) {
-                 if($(".radio2").val()==1)
-                 window.location.href = 'index.html';
-                 else window.location.href = '../MovieRecommend/back/moviehome.html';
-                 layer.alert(data.msg);
-             } else {
-                 layer.alert(data.msg);
-             }
-         }
-     })
- }
+    function login() {
+        $.ajax({
+            url: 'http://localhost:8080/do_login',
+            type: 'post',
+            dataType: 'text',
+            data: {
+                account: $('#userName').val(),
+                password: $('#password').val(),
+                role: $('#roleradio input[name="radio2"]:checked ').val()
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (data) {
+                data = JSON.parse(data);
+                var code = data.status
+                var role = $('#roleradio input[name="radio2"]:checked ').val();
+                if (code === 0) {
+                    console.log(role);
+                    if (role)
+                        window.location.href = 'index.html';
+                    else window.location.href = '../MovieRecommend/back/moviehome.html';
+                    layer.alert(data.msg);
+                } else {
+                    layer.alert(data.msg);
+                }
+            }
+        })
+    }
 
 </script>
 <!-- javaScripts

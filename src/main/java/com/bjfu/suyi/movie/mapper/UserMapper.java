@@ -1,11 +1,7 @@
 package com.bjfu.suyi.movie.mapper;
 
 import com.bjfu.suyi.movie.model.User;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;import org.apache.ibatis.annotations.ResultMap;import org.apache.ibatis.annotations.Select;import java.util.List;
 
 @Mapper
 public interface UserMapper {

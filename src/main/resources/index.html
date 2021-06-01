@@ -51,8 +51,8 @@
                     <!--                       <h3> Browse </h3>-->
                     <ul>
                         <li class="active"><a href="index.html"> <i class="uil-home-alt"></i> 首页 </a></li>
-                        <li><a href="catagroies.html"> <i class="uil-layers"></i> 分类 </a></li>
-                        <li><a href="browse-channals.html"> <i class="uil-users-alt"></i> 个人中心 </a></li>
+                        <li><a href="fenlei.html"> <i class="uil-layers"></i> 分类 </a></li>
+                        <li><a href="single.html"> <i class="uil-users-alt"></i> 个人中心 </a></li>
                     </ul>
                 </div>
 
@@ -644,7 +644,8 @@
                 var str1 = "";
                 for (var i = 0; i < tt.length; i++) {
                     var cCover = tt[i].cmovieCover;
-                    str1 += "<li><a href=\"single-movies.html\" class=\"video-post\">" +
+                    var nId=tt[i].nid;
+                    str1 += "<li><a onclick='showMovieDetail(\""+nId+"\")' class=\"video-post\">" +
                         "<div class=\"video-post-thumbnail\">" +
                         "<span class=\"video-post-count\">" + tt[i].nviews + "</span>" +
                         "<span class=\"video-post-time\">" + tt[i].nfilmLength + "分钟" + "</span>" +
@@ -692,11 +693,13 @@
             success: function (data) {
                 var tt = data.data;
                 console.log(tt);
+
                 var str1 = "";
                 for (var i = 0; i < tt.length; i++) {
                     var cCover = tt[i].cmovieCover;
+                    var nId=tt[i].nid;
                     str1 += "<div>"+
-                        "<a href=\"single-movies.html\" class=\"video-post\">" +
+                        "<a onclick='showMovieDetail(\""+nId+"\")' class=\"video-post\">" +
                         "<div class=\"video-post-thumbnail\">" +
                         "<span class=\"video-post-count\">" + tt[i].nviews + "</span>" +
                         "<span class=\"video-post-time\">" + tt[i].nfilmLength + "分钟" + "</span>" +

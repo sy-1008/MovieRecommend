@@ -3,6 +3,7 @@ package com.bjfu.suyi.movie.service;
 import com.bjfu.suyi.movie.common.pojo.SverResponse;
 import com.bjfu.suyi.movie.model.Movies;
 
+import java.util.Date;
 import java.util.List;
 
 public interface MoviesService {
@@ -29,6 +30,8 @@ public interface MoviesService {
     SverResponse<Movies> getMovieDetail(int id);
 
     SverResponse<List<Movies>> showMoviesBySearchName(String searchName);
+
+    SverResponse<List<Movies>> multiconditionalSearch(String searchName, String movieType, String movieLanguage);
 
     SverResponse<List<Movies>> getMovieListByType(String type);
 

@@ -25,14 +25,19 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "do_login", method = RequestMethod.POST)
+    @CrossOrigin
     public SverResponse<User> doLogin(String account, String password, HttpSession session) {
         SverResponse<User> response = userService.doLogin(account, password);
+
         if (response.getData() == null) {
+//            System.out.print(response.getData().getNId());
             // user does not exit
             return SverResponse.createByErrorMessage("用户名或密码错误");
         } else {
-            session.setAttribute(ConstUtil.CUR_USER, response.getData()); // user
+            session.setAttribute("LoginUserId",response.getData().getNId()); // user
+
         }
+
         return response;
     }
 
@@ -46,6 +51,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "do_register", method = RequestMethod.POST)
+    @CrossOrigin
     public SverResponse<String> doRegister(String username, String email, String phone, String password) {
 
         User user1 = userService.selectUserByEmail(email);
@@ -73,6 +79,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/showUserList", method = RequestMethod.GET)
+    @CrossOrigin
     public SverResponse<List<User>> showUserList() {
         return userService.showUserList();
     }
@@ -91,23 +98,39 @@ public class UserController {
 
     /**
      * 查看用户详情
+     *
      * @param id
      * @return
      */
     @RequestMapping(value = "/getUserDetail", method = RequestMethod.GET)
     @CrossOrigin
-    public SverResponse<User> getUserDetail(@RequestParam("id") int id){
+    public SverResponse<User> getUserDetail(@RequestParam("id") int id) {
         return userService.getUserDetail(id);
     }
 
     /**
      * 后台编辑用户信息
+     *
      * @param user
      * @return
      */
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     @CrossOrigin
-    public SverResponse<String> editUser(@RequestBody User user){
+    public SverResponse<String> editUser(@RequestBody User user) {
         return userService.editUser(user);
+    }
+
+    /**
+     * 前台个人中心
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "/showUserDetail", method = RequestMethod.GET)
+    @CrossOrigin
+    public SverResponse<User> showUserDetail(HttpSession session) {
+        int LoginUserId= (int) session.getAttribute("LoginUserId");
+
+        User u=userService.selectByPrimaryKey(LoginUserId);
+        return SverResponse.createRespBySuccess(u);
     }
 }

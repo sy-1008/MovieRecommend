@@ -7,6 +7,7 @@ import com.bjfu.suyi.movie.mapper.MoviesMapper;
 import com.bjfu.suyi.movie.model.Movies;
 import com.bjfu.suyi.movie.service.MoviesService;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -76,6 +77,11 @@ public class MoviesServiceImpl implements MoviesService {
             return SverResponse.createByErrorMessage("电影不存在");
         }
         return SverResponse.createRespBySuccess(movies);
+    }
+
+    @Override
+    public SverResponse<List<Movies>> multiconditionalSearch(String searchName, String movieType, String movieLanguage) {
+        return SverResponse.createRespBySuccess(moviesMapper.multiconditionalSearch(searchName,movieType,movieLanguage));
     }
 
     @Override

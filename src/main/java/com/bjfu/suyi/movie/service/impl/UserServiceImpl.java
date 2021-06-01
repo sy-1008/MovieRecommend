@@ -64,8 +64,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public SverResponse<User> getUserDetail(int id) {
-        User user=userMapper.selectByPrimaryKey(id);
-        if(user==null){
+        User user = userMapper.selectByPrimaryKey(id);
+        if (user == null) {
             return SverResponse.createByErrorMessage("用户不存在");
         }
         return SverResponse.createRespBySuccess(user);
@@ -83,21 +83,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public SverResponse<List<User>> showUserList() {
-        return  SverResponse.createRespBySuccess(userMapper.showUserList());
+        return SverResponse.createRespBySuccess(userMapper.showUserList());
     }
 
     @Override
     public SverResponse<String> deleteUserById(int id) {
         userMapper.deleteByPrimaryKey(id);
-        return  SverResponse.createRespBySuccess("注销用户成功");
+        return SverResponse.createRespBySuccess("注销用户成功");
     }
 
     @Override
     public SverResponse<String> editUser(User user) {
         userMapper.updateByPrimaryKey(user);
-        return  SverResponse.createRespBySuccess("编辑用户成功");
+        return SverResponse.createRespBySuccess("编辑用户成功");
     }
 
 
 }
+
 
