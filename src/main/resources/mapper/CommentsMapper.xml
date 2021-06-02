@@ -7,7 +7,7 @@
     <id column="n_id" jdbcType="INTEGER" property="nId" />
     <result column="n_power_id" jdbcType="INTEGER" property="nPowerId" />
     <result column="n_movie_id" jdbcType="INTEGER" property="nMovieId" />
-    <result column="d_create_time" jdbcType="TIMESTAMP" property="dCreateTime" />
+    <result column="d_create_time" jdbcType="DATE" property="dCreateTime" />
     <result column="c_content" jdbcType="VARCHAR" property="cContent" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -30,7 +30,7 @@
     <!--@mbg.generated-->
     insert into comments (n_power_id, n_movie_id, d_create_time, 
       c_content)
-    values (#{nPowerId,jdbcType=INTEGER}, #{nMovieId,jdbcType=INTEGER}, #{dCreateTime,jdbcType=TIMESTAMP}, 
+    values (#{nPowerId,jdbcType=INTEGER}, #{nMovieId,jdbcType=INTEGER}, #{dCreateTime,jdbcType=DATE}, 
       #{cContent,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="n_id" keyProperty="nId" parameterType="com.bjfu.suyi.movie.model.Comments" useGeneratedKeys="true">
@@ -58,7 +58,7 @@
         #{nMovieId,jdbcType=INTEGER},
       </if>
       <if test="dCreateTime != null">
-        #{dCreateTime,jdbcType=TIMESTAMP},
+        #{dCreateTime,jdbcType=DATE},
       </if>
       <if test="cContent != null">
         #{cContent,jdbcType=VARCHAR},
@@ -76,7 +76,7 @@
         n_movie_id = #{nMovieId,jdbcType=INTEGER},
       </if>
       <if test="dCreateTime != null">
-        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+        d_create_time = #{dCreateTime,jdbcType=DATE},
       </if>
       <if test="cContent != null">
         c_content = #{cContent,jdbcType=VARCHAR},
@@ -89,7 +89,7 @@
     update comments
     set n_power_id = #{nPowerId,jdbcType=INTEGER},
       n_movie_id = #{nMovieId,jdbcType=INTEGER},
-      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      d_create_time = #{dCreateTime,jdbcType=DATE},
       c_content = #{cContent,jdbcType=VARCHAR}
     where n_id = #{nId,jdbcType=INTEGER}
   </update>

@@ -47,7 +47,7 @@ public class MoviesServiceImpl implements MoviesService {
     }
 
     @Override
-    public SverResponse<List<Movies>>  showMoviesList() {
+    public SverResponse<List<Movies>> showMoviesList() {
         return SverResponse.createRespBySuccess(moviesMapper.showMoviesList());
     }
 
@@ -81,7 +81,7 @@ public class MoviesServiceImpl implements MoviesService {
 
     @Override
     public SverResponse<List<Movies>> multiconditionalSearch(String searchName, String movieType, String movieLanguage) {
-        return SverResponse.createRespBySuccess(moviesMapper.multiconditionalSearch(searchName,movieType,movieLanguage));
+        return SverResponse.createRespBySuccess(moviesMapper.multiconditionalSearch(searchName, movieType, movieLanguage));
     }
 
     @Override
@@ -91,7 +91,7 @@ public class MoviesServiceImpl implements MoviesService {
 
     @Override
     public SverResponse<String> addMovie(Movies movies) {
-         moviesMapper.insert(movies);
+        moviesMapper.insert(movies);
         return SverResponse.createRespBySuccess("增加电影成功");
     }
 
@@ -109,6 +109,7 @@ public class MoviesServiceImpl implements MoviesService {
 
 
 }
+
 
 
 

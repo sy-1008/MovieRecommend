@@ -50,4 +50,14 @@ public class TestServiceImpl implements TestService{
         return SverResponse.createRespBySuccess(testMapper.showTestList());
     }
 
+    @Override
+    public int checkanswer(int testId, String userAnswer) {
+        Test test=testMapper.selectByPrimaryKey(testId);
+        if(test.getCAnswer().equals(userAnswer)){
+            return 1;
+        }
+        else
+            return 0;
+    }
+
 }

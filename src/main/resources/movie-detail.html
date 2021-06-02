@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/night-mode.css">
     <link rel="stylesheet" href="assets/css/framework.css">
+    <link rel="stylesheet" href="assets/layui/css/layui.css" media="all">
 
     <!-- icons
     ================================================== -->
@@ -50,9 +51,9 @@
                 <div class="sections">
                     <!--                       <h3> Browse </h3>-->
                     <ul>
-                        <li class="active"><a href="home.html"> <i class="uil-home-alt"></i> 首页 </a></li>
-                        <li><a href="browse-catagroies.html"> <i class="uil-layers"></i> 分类 </a></li>
-                        <li><a href="browse-channals.html"> <i class="uil-users-alt"></i> 个人中心 </a></li>
+                        <li class="active"><a href="index.html"> <i class="uil-home-alt"></i> 首页 </a></li>
+                        <li><a href="fenlei.html"> <i class="uil-layers"></i> 分类 </a></li>
+                        <li><a href="single.html"> <i class="uil-users-alt"></i> 个人中心 </a></li>
                     </ul>
                 </div>
 
@@ -136,7 +137,7 @@
 
 
                 <!-- profile -image -->
-                <a class="opts_account"> <img src="assets/images/avatars/avatar-1.jpg" alt=""></a>
+                <a class="opts_account"> <img id="LoginUser2" src=""></a>
 
                 <!-- profile dropdown-->
                 <div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small"
@@ -147,7 +148,7 @@
 
                         <div class="dropdown-user-details">
                             <div class="dropdown-user-avatar">
-                                <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                                <img id="LoginUser1" src="" alt="">
                             </div>
                             <div class="dropdown-user-name">
                                 Richard Ali <span> verified <i class="uil-check"></i> </span>
@@ -204,7 +205,7 @@
                                   uk-toggle="target: #video-box ; cls: video-resized-hedden uk-animation-slide-left"></span>
 
                         <div class="embed-video">
-                            <iframe src="http://m.v.qq.com/x/page/z/h/2/z0511hh0nh2.html" frameborder="0"
+                            <iframe id="video" src="" frameborder="0"
                                     uk-video="automute: true" allowfullscreen uk-responsive></iframe>
                         </div>
                     </div>
@@ -221,20 +222,25 @@
                             <div class="video-info-details">
                                 <span id="nviews"> views </span>
                             </div>
-                            <div class="video-likes">
-                                <div class="like-btn" uk-tooltip="I like it">
-                                    <i class="uil-thumbs-up"></i>
-                                    <span class="likes">21</span>
-                                </div>
-                                <div class="video-info-element">
-                                    <div class="views-bar"></div>
-                                    <div class="views-bar blue" style="width: 40%"></div>
-                                </div>
-                                <div class="like-btn" uk-tooltip="I Hate it">
-                                    <i class="uil-thumbs-down"></i>
-                                    <span class="likes">14</span>
-                                </div>
+
+                            <div>
+                                <div id="test1"></div>
+                                <button type="button" class="layui-btn" id="getRate">提交</button>
                             </div>
+<!--                            <div class="video-likes">-->
+<!--                                <div class="like-btn" uk-tooltip="I like it">-->
+<!--                                    <i class="uil-thumbs-up"></i>-->
+<!--                                    <span class="likes">21</span>-->
+<!--                                </div>-->
+<!--                                <div class="video-info-element">-->
+<!--                                    <div class="views-bar"></div>-->
+<!--                                    <div class="views-bar blue" style="width: 40%"></div>-->
+<!--                                </div>-->
+<!--                                <div class="like-btn" uk-tooltip="I Hate it">-->
+<!--                                    <i class="uil-thumbs-down"></i>-->
+<!--                                    <span class="likes">14</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
                         </div>
                         <div class="uk-flex uk-flex-between">
@@ -305,32 +311,24 @@
                     <hr>
 
                     <div class="comments mt-4">
-                        <h3> 评论 <span class="comments-amount">5210条</span></h3>
+                        <h3> 评论 <span class="comments-amount"></span></h3>
 
-                        <ul>
-                            <li>
-                                <div class="avatar"><img src="assets/images//avatars/avatar-1.jpg" alt="">
-                                </div>
-                                <div class="comment-content">
-                                    <div class="comment-by">用户名<span>高级用户</span>
-                                        <a href="#" class="reply"><i class="icon-line-awesome-undo"></i>
-                                            Reply</a>
-                                    </div>
-                                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                                        nonummy
-                                        nibh
-                                        euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-                                        enim ad
-                                        minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-                                        nisl
-                                        ut
-                                        aliquip ex ea commodo consequat. Nam liber tempor cum soluta nobis
-                                        eleifend
-                                        option
-                                        congue </p>
-                                </div>
+                        <ul id="commentList">
+                            <!--                            <li>-->
+                            <!--                                <div class="avatar"><img id="powerCImage" src="" alt="">-->
+                            <!--                                </div>-->
+                            <!--                                <div class="comment-content">-->
+                            <!--                                    <div class="comment-by">-->
+                            <!--                                        <h3 id="powerCName">用户名</h3>-->
+                            <!--                                        <span id="powerNRole">高级用户</span>-->
+                            <!--                                        <a href="#" class="reply"><i class="icon-line-awesome-undo"></i>-->
+                            <!--                                            Reply</a>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p id="ccontent"> </p>-->
+                            <!--                                    <p id="dcreateTime"> </p>-->
+                            <!--                                </div>-->
 
-                            </li>
+                            <!--                            </li>-->
 
 
                         </ul>
@@ -341,27 +339,20 @@
                         <h4>你的评论 </h4>
                         <ul>
                             <li>
-                                <div class="avatar"><img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                <div class="avatar"><img id="LoginUser" src="">
                                 </div>
                                 <div class="comment-content">
-                                    <form class="uk-grid-small" uk-grid>
-                                        <div class="uk-width-1-2@s">
-                                            <label class="uk-form-label">Name</label>
-                                            <input class="uk-input" type="text" placeholder="Name">
-                                        </div>
-                                        <div class="uk-width-1-2@s">
-                                            <label class="uk-form-label">Email</label>
-                                            <input class="uk-input" type="text" placeholder="Email">
-                                        </div>
+                                    <div class="uk-grid-small" uk-grid>
                                         <div class="uk-width-1-1@s">
                                             <label class="uk-form-label">Comment</label>
-                                            <textarea class="uk-textarea" placeholder="Enter Your Comments her..."
+                                            <textarea id="ccontent" class="uk-textarea"
+                                                      placeholder="Enter Your Comments her..."
                                                       style=" height:160px"></textarea>
                                         </div>
                                         <div class="uk-grid-margin">
-                                            <input type="submit" value="submit" class="button warning">
+                                            <input id="sbm" value="submit" class="button warning">
                                         </div>
-                                    </form>
+                                    </div>
 
                                 </div>
                             </li>
@@ -371,7 +362,9 @@
 
                 </div>
                 <div class="uk-width-expand@m">
-                    <button  class="button  soft-warning button Large" style="align-items: center" onclick="javascript:window.location.href='commontest.html'">参与答题</button>
+                    <button class="button  soft-warning button Large" style="align-items: center"
+                            onclick="javascript:window.location.href='commontest.html'">参与答题
+                    </button>
                     <div class="uk-flex uk-flex-middle uk-flex-between px-1 pb-3">
                         <p class="mb-0 uk-h5"> 相似推荐 </p>
 
@@ -428,21 +421,8 @@
             <!-- footer
            ================================================== -->
             <div class="footer">
-                <div class="uk-grid-collapse" uk-grid>
-<!--                    <div class="uk-width-expand@s uk-first-column">-->
-<!--                        <p>Copyright &copy; 2020.Company name All rights reserved.</p>-->
-<!--                    </div>-->
-                    <div class="uk-width-auto@s">
-                        <nav class="footer-nav-icon">
-                            <ul>
-                                <li><a href="#"><i class="icon-brand-facebook"></i></a></li>
-                                <li><a href="#"><i class="icon-brand-dribbble"></i></a></li>
-                                <li><a href="#"><i class="icon-brand-youtube"></i></a></li>
-                                <li><a href="#"><i class="icon-brand-twitter"></i></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+
+
             </div>
 
         </div>
@@ -507,14 +487,29 @@
     }
 </style>
 <script>
+
+    function timeFormat(time) {
+        // 时间格式化 2019-09-08
+        var year = time.getFullYear();
+        var month = time.getMonth() + 1 > 10 ? time.getMonth()+1 : '0'+(time.getMonth()+1);
+        var day = time.getDate() > 10 ? time.getDate() : "0" + time.getDate();
+        return year + "-" + month + "-" + day;
+    }
+
+</script>
+<script>
     $(document).ready(function () {
         var movieId = localStorage.getItem("movieId");
+        var userId = localStorage.getItem("userId");
         console.log(movieId);
         $.ajax({
             url: 'http://localhost:8080/getMovieDetail?id=' + movieId,//后台请求的数据
             dataType: 'json', //数据格式
             type: "get",//请求方式
             async: true,//是否异步请求
+            xhrFields: {
+                withCredentials: true
+            },
             success: function (data) {
                 var dd = data.data;
                 $("#cname").html(dd.cname);
@@ -523,13 +518,137 @@
                 $("#cType").html(dd.cmovieType);
                 $("#date").html(dd.dreleaseDate);
                 $("#language").html(dd.cmovieLanguage);
+                $('#video').attr('src', dd.cvideo);
+
             },
             error: function (arg1) {
                 alert("加载数据失败");
                 console.log(arg1);
             }
         })
+
+
+        $.ajax({
+            url: 'http://localhost:8080/showCommentsList?movieId=' + movieId,//后台请求的数据
+            dataType: 'json', //数据格式
+            type: "get",//请求方式
+            async: true,//是否异步请求
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (data) {
+                var tt = data.data;
+                var str1 = "";
+                for (var i = 0; i < tt.length; i++) {
+                    var powerCImage = tt[i].powerCImage;
+                    str1 += "<li>" +
+                        "<div class=\"avatar\"><img  src='" + powerCImage + "'>" +
+                        "</div>" +
+                        "<div class=\"comment-content\">" +
+                        "<div class=\"comment-by\">" +
+                        "<h3>" + tt[i].powerCName + "</h3>" +
+                        "<a class=\"reply\"><i class=\"icon-line-awesome-undo\"></i>Reply</a>" +
+                        "</div>" +
+                        "<p >" + tt[i].ccontent + " </p>" +
+                        "<p >" + tt[i].dcreateTime + " </p>" +
+                        "</div>" +
+                        "</li>"
+                }
+                commentList.innerHTML = str1;
+            },
+            error: function (arg1) {
+                alert("加载数据失败");
+                console.log(arg1);
+            }
+        })
+
+
+        $("#sbm").click(function () {
+            var curDate =timeFormat(new Date())
+
+            console.log(curDate);
+            var content = {
+                npowerId: userId,
+                nmovieId: movieId,
+                ccontent: $('#ccontent').val(),
+                dcreateTime: curDate
+            }
+            $.ajax({
+                url: 'http://localhost:8080/addComment',
+                type: 'post',
+                dataType: "json",
+                data: JSON.stringify(content),
+                async: true,//是否异步请求
+                xhrFields: {withCredentials: true},
+                crossDomain: true,
+                contentType: 'application/json; charset=UTF-8',
+                success: function (data) {
+                    // data = JSON.parse(data);
+
+                    var code = data.status;
+                    if (code === 0) {
+                        window.location.href = 'movie-detail.html';
+                        layer.alert("评论新增成功");
+                    } else {
+                        layer.alert(data.msg);
+                    }
+                }
+            });
+            return false;
+        })
     })
+</script>
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            url: "http://localhost:8080/showUserDetail",//后台请求的数据
+            dataType: 'json', //数据格式
+            type: "get",//请求方式
+            async: true,//是否异步请求
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (data) {
+
+                var dd = data.data;
+
+                $('#LoginUser').attr('src', dd.cuserImage);
+                $('#LoginUser1').attr('src', dd.cuserImage);
+                $('#LoginUser2').attr('src', dd.cuserImage);
+            }
+        })
+    })
+</script>
+<script src="assets/layui/layui.js"></script>
+<script>
+    layui.use(['rate','jquery'], function(){
+        var $ = layui.jquery;
+        var rate = layui.rate;
+
+        //渲染
+        var instance= rate.render({
+            elem: '#test1' , //绑定元素
+            half: true,
+            choose: function (value) {
+                // 此处点击分数之后可用Ajax传递到后台并保存到数据库 具体略
+                // 评分完成之后重载实例
+                rate.render({
+                    elem: '#test1',
+                    half: true,
+                    // value值也可以是前台通过Ajax获取到的数据库中的值
+                    value: value,
+                    // 设置为只读防止多次评分
+                    readonly: true
+                })
+            }
+        });
+        $("#getRate").click(function(){
+            console.log(instance);
+            // 打印出instance可知instance.config.value即是评分值
+            layer.msg("电影评级："+instance.config.value);
+        });
+    });
 </script>
 </body>
 

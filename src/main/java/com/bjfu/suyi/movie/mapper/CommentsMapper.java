@@ -1,10 +1,7 @@
 package com.bjfu.suyi.movie.mapper;
 
 import com.bjfu.suyi.movie.model.Comments;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Delete;import org.apache.ibatis.annotations.Mapper;import org.apache.ibatis.annotations.ResultMap;import org.apache.ibatis.annotations.Select;import java.util.List;
 
 @Mapper
 public interface CommentsMapper {
@@ -23,4 +20,8 @@ public interface CommentsMapper {
     @ResultMap("BaseResultMap")
     @Delete("delete from comments where n_power_id=#{uid} and n_movie_id=#{mid}")
     int deleteComment(int uid, int mid);
+
+    @ResultMap("BaseResultMap")
+    @Select("select * from comments")
+    List<Comments> showCommentListAll();
 }

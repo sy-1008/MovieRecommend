@@ -19,14 +19,18 @@ public class Comments implements Serializable {
     private Integer nMovieId;
 
     /**
-    * 评论时间
-    */
+     * 评论时间
+     */
     private Date dCreateTime;
 
     /**
-    * 评论内容
-    */
+     * 评论内容
+     */
     private String cContent;
 
     private static final long serialVersionUID = 1L;
+
+    public static CommentsBuilder builder() {
+        return new CommentsBuilder();
+    }
 }

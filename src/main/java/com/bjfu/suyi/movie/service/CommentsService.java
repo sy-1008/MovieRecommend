@@ -2,7 +2,10 @@ package com.bjfu.suyi.movie.service;
 
 import com.bjfu.suyi.movie.common.pojo.SverResponse;
 import com.bjfu.suyi.movie.model.Comments;
-public interface CommentsService{
+
+import java.util.List;
+
+public interface CommentsService {
 
 
     int deleteByPrimaryKey(Integer nId);
@@ -17,8 +20,11 @@ public interface CommentsService{
 
     int updateByPrimaryKey(Comments record);
 
-    SverResponse<String>createComments(Integer userId,Integer movieId,Comments comments);
+    SverResponse<String> createComments(Integer userId, Integer movieId, Comments comments);
 
-    SverResponse<String> deleteComment(int uid,int mid);
+    SverResponse<String> deleteComment(int uid, int mid);
+
+    SverResponse<List<Comments>> showCommentListAll();
 
 }
+

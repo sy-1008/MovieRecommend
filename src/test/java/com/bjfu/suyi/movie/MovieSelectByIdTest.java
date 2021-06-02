@@ -1,7 +1,9 @@
 package com.bjfu.suyi.movie;
 
 import com.bjfu.suyi.movie.mapper.MoviesMapper;
+import com.bjfu.suyi.movie.mapper.MoviesUserCommentsMapper;
 import com.bjfu.suyi.movie.model.Movies;
+import com.bjfu.suyi.movie.model.MoviesUserComments;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -17,6 +19,8 @@ import java.util.List;
 public class MovieSelectByIdTest {
     @Resource
     MoviesMapper moviesMapper;
+    @Resource
+    MoviesUserCommentsMapper moviesUserCommentsMapper;
     @Test
     void getMoviesById(){
         Movies movies=moviesMapper.selectByPrimaryKey(1);
@@ -30,6 +34,8 @@ public class MovieSelectByIdTest {
  void Search(){
         List<Movies> moviesList=moviesMapper.multiconditionalSearch("","","英语");
         System.out.print(moviesList.size());
+        List<MoviesUserComments> moviesUserComments=moviesUserCommentsMapper.showCommentsList(1);
+        System.out.print(moviesUserComments.size());
  }
 
 }

@@ -47,6 +47,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int  updateScore(int userId, int addScore) {
+
+        return userMapper.updateScore(userId,addScore);
+    }
+
+    @Override
+    public int updateRole(int userId) {
+        return userMapper.updateRole(userId);
+    }
+
+    @Override
     public SverResponse<User> doLogin(String account, String password) {
         int result = userMapper.checkUserByAccount(account);
         if (result == 0) {

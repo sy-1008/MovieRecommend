@@ -50,9 +50,9 @@
                 <div class="sections">
                     <!--                       <h3> Browse </h3>-->
                     <ul>
-                        <li class="active"><a href="home.html"> <i class="uil-home-alt"></i> 首页 </a></li>
-                        <li><a href="browse-catagroies.html"> <i class="uil-layers"></i> 分类 </a></li>
-                        <li><a href="browse-channals.html"> <i class="uil-users-alt"></i> 个人中心 </a></li>
+                        <li class="active"><a href="index.html"> <i class="uil-home-alt"></i> 首页 </a></li>
+                        <li><a href="fenlei.html"> <i class="uil-layers"></i> 分类 </a></li>
+                        <li><a href="single.html"> <i class="uil-users-alt"></i> 个人中心 </a></li>
                     </ul>
                 </div>
 
@@ -201,7 +201,7 @@
             </div>
 
             <div style="align-items: center">
-                <button class="button  soft-warning" style="float: right">提交答案</button>
+                <button id="sbm" class="button  soft-warning" style="float: right">提交答案</button>
             </div>
 
 
@@ -219,9 +219,9 @@
            ================================================== -->
             <div class="footer">
                 <div class="uk-grid-collapse" uk-grid>
-                    <div class="uk-width-expand@s uk-first-column">
-                        <p>Copyright &copy; 2020.Company name All rights reserved.</p>
-                    </div>
+<!--                    <div class="uk-width-expand@s uk-first-column">-->
+<!--                        <p>Copyright &copy; 2020.Company name All rights reserved.</p>-->
+<!--                    </div>-->
                     <div class="uk-width-auto@s">
                         <nav class="footer-nav-icon">
                             <ul>
@@ -297,19 +297,20 @@
                 console.log(tt);
                 var str1 = "";
                 for (var i = 0; i < tt.length; i++) {
-                    var  ans1_testID='radio1'+tt[i].nid;
-                    var  ans2_testID='radio2'+tt[i].nid;
-                    var  ans3_testID='radio3'+tt[i].nid;
+                    var  testID=tt[i].nid;
+                    localStorage.setItem("testId",testID);
+                    // var  ans2_testID='radio2'+tt[i].nid;
+                    // var  ans3_testID='radio3'+tt[i].nid;
                     var  ques_testID='ques'+tt[i].nid;
                     localStorage.setItem('test'+i,tt[i].nid);
                     str1 += "<div class=\"uk-card uk-card-default uk-card-large uk-card-body\">" +
                         "<h2 class=\"uk-card-title\" name='"+ques_testID+"'>" + tt[i].cques + "</h2>" +
                         " <div class=\"uk-form-controls uk-form-controls-text\">" +
-                        "<label><input class=\"uk-radio\" type=\"radio\" name='"+ans1_testID+"'> " + tt[i].canswer1 + "</label><br>" +
+                        "<label><input class=\"uk-radio\" type=\"radio\" name='"+testID+"' value='"+tt[i].canswer1+"'> " + tt[i].canswer1 + "</label><br>" +
                         "<br>" +
-                        "<label><input class=\"uk-radio\" type=\"radio\" name='"+ans2_testID+"'>" + tt[i].canswer2 + "</label><br>" +
+                        "<label><input class=\"uk-radio\" type=\"radio\" name='"+testID+"' value='"+tt[i].canswer2+"'>" + tt[i].canswer2 + "</label><br>" +
                         "<br>" +
-                        "<label><input class=\"uk-radio\" type=\"radio\" name='"+ans3_testID+"'> " + tt[i].canswer3 + "</label><br>" +
+                        "<label><input class=\"uk-radio\" type=\"radio\" name='"+testID+"' value='"+tt[i].canswer3+"'> " + tt[i].canswer3 + "</label><br>" +
                         "<br>" +
                         "</div>" +
                         " </div><br>"
@@ -321,6 +322,36 @@
                 alert("加载数据失败");
                 console.log(arg1);
             }
+        })
+
+
+        $("#sbm").click(function () {
+            var testId=localStorage.getItem("testId");
+            // var useranswer=$('input[name=testId]:checked').val();
+            var useranswer=$('input:radio:checked').val();
+            console.log(testId);
+            console.log(useranswer);
+            $.ajax({
+                url: 'http://localhost:8080/checkanswer?testId='+testId+'&userAnswer='+useranswer,
+                type: 'get',
+                dataType:"json",
+                async: true,//是否异步请求
+                xhrFields: {withCredentials: true},
+                crossDomain:true,
+                contentType: 'application/json; charset=UTF-8',
+                success: function (data) {
+                    // data = JSON.parse(data);
+
+                    var code = data.status;
+                    if (code === 0) {
+                        // window.location.href = 'index.html';
+                        window.alert(data.data);
+                    } else {
+                        window.alert(data.msg);
+                    }
+                }
+            });
+            return false;
         })
     })
 </script>

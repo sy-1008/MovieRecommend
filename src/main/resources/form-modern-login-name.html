@@ -165,9 +165,11 @@
                 var role = $('#roleradio input[name="radio2"]:checked ').val();
                 if (code === 0) {
                     console.log(role);
-                    if (role)
+                    if (role=="0") {
+                        window.location.href = '../MovieRecommend/back/moviehome.html';
+                    } else {
                         window.location.href = 'index.html';
-                    else window.location.href = '../MovieRecommend/back/moviehome.html';
+                    }
                     layer.alert(data.msg);
                 } else {
                     layer.alert(data.msg);

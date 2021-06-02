@@ -44,6 +44,17 @@ public class CommentsController {
     }
 
     /**
+     * 前台查看电影评论list
+     *
+     * @return
+     */
+    @RequestMapping(value = "/showCommentsList", method = RequestMethod.GET)
+    @CrossOrigin
+    public SverResponse<List<MoviesUserComments>> showCommentsList(@RequestParam("movieId") int movieId){
+        return moviesUserCommentsService.showCommentsList(movieId);
+    }
+
+    /**
      * 后台删除评论
      * @param uid
      * @param mid
@@ -54,4 +65,26 @@ public class CommentsController {
     public SverResponse<String> deleteComment(@RequestParam("UserId") int uid,@RequestParam("MovieId") int mid){
         return commentsService.deleteComment(uid,mid);
     }
+
+    /**
+     * 前台发布评论
+     * @param comments
+     * @return
+     */
+    @RequestMapping(value = "/addComment", method = RequestMethod.POST)
+    @CrossOrigin
+   public SverResponse<String> addComment(@RequestBody Comments comments){
+         commentsService.insert(comments);
+        return SverResponse.createRespBySuccessMessage("评论发布成功");
+   }
+
+    /**
+     * 前台查看全部评论信息
+     * @return
+     */
+    @RequestMapping(value = "/showCommentListAll", method = RequestMethod.POST)
+    @CrossOrigin
+   public SverResponse<List<Comments>> showCommentListAll(){
+        return commentsService.showCommentListAll();
+   }
 }

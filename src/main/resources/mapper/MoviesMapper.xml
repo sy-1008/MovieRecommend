@@ -15,11 +15,12 @@
     <result column="f_movie_score" jdbcType="DOUBLE" property="fMovieScore" />
     <result column="n_is_hot" jdbcType="INTEGER" property="nIsHot" />
     <result column="n_views" jdbcType="INTEGER" property="nViews" />
+    <result column="c_video" jdbcType="VARCHAR" property="cVideo" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
     n_id, c_name, n_film_length, d_release_date, c_info, c_movie_type, c_movie_language, 
-    c_movie_cover, f_movie_score, n_is_hot, n_views
+    c_movie_cover, f_movie_score, n_is_hot, n_views, c_video
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -38,11 +39,11 @@
     insert into movies (c_name, n_film_length, d_release_date, 
       c_info, c_movie_type, c_movie_language, 
       c_movie_cover, f_movie_score, n_is_hot, 
-      n_views)
+      n_views, c_video)
     values (#{cName,jdbcType=VARCHAR}, #{nFilmLength,jdbcType=INTEGER}, #{dReleaseDate,jdbcType=TIMESTAMP}, 
       #{cInfo,jdbcType=VARCHAR}, #{cMovieType,jdbcType=VARCHAR}, #{cMovieLanguage,jdbcType=VARCHAR}, 
       #{cMovieCover,jdbcType=VARCHAR}, #{fMovieScore,jdbcType=DOUBLE}, #{nIsHot,jdbcType=INTEGER}, 
-      #{nViews,jdbcType=INTEGER})
+      #{nViews,jdbcType=INTEGER}, #{cVideo,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="n_id" keyProperty="nId" parameterType="com.bjfu.suyi.movie.model.Movies" useGeneratedKeys="true">
     <!--@mbg.generated-->
@@ -78,6 +79,9 @@
       <if test="nViews != null">
         n_views,
       </if>
+      <if test="cVideo != null">
+        c_video,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="cName != null">
@@ -109,6 +113,9 @@
       </if>
       <if test="nViews != null">
         #{nViews,jdbcType=INTEGER},
+      </if>
+      <if test="cVideo != null">
+        #{cVideo,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -146,6 +153,9 @@
       <if test="nViews != null">
         n_views = #{nViews,jdbcType=INTEGER},
       </if>
+      <if test="cVideo != null">
+        c_video = #{cVideo,jdbcType=VARCHAR},
+      </if>
     </set>
     where n_id = #{nId,jdbcType=INTEGER}
   </update>
@@ -161,7 +171,8 @@
       c_movie_cover = #{cMovieCover,jdbcType=VARCHAR},
       f_movie_score = #{fMovieScore,jdbcType=DOUBLE},
       n_is_hot = #{nIsHot,jdbcType=INTEGER},
-      n_views = #{nViews,jdbcType=INTEGER}
+      n_views = #{nViews,jdbcType=INTEGER},
+      c_video = #{cVideo,jdbcType=VARCHAR}
     where n_id = #{nId,jdbcType=INTEGER}
   </update>
 

@@ -72,9 +72,9 @@
 
 
                 <div id="foot" style="margin-top: 200px">
-<!--                    <div class="foot-content">-->
-<!--                        <p>© 2020 <strong>Movies Pro</strong>. All Rights Reserved. </p>-->
-<!--                    </div>-->
+                    <!--                    <div class="foot-content">-->
+                    <!--                        <p>© 2020 <strong>Movies Pro</strong>. All Rights Reserved. </p>-->
+                    <!--                    </div>-->
                 </div>
 
 
@@ -485,13 +485,13 @@
 
                 </div>
 
-<!--                <ul class="uk-pagination my-5 uk-flex-center" uk-margin>-->
-<!--                    <li class="uk-active"><span>1</span></li>-->
-<!--                    <li><a href="#">2</a></li>-->
-<!--                    <li><a href="#">3</a></li>-->
-<!--                    <li class="uk-disabled"><span>...</span></li>-->
-<!--                    <li><a href="#"><span uk-pagination-next></span></a></li>-->
-<!--                </ul>-->
+                <!--                <ul class="uk-pagination my-5 uk-flex-center" uk-margin>-->
+                <!--                    <li class="uk-active"><span>1</span></li>-->
+                <!--                    <li><a href="#">2</a></li>-->
+                <!--                    <li><a href="#">3</a></li>-->
+                <!--                    <li class="uk-disabled"><span>...</span></li>-->
+                <!--                    <li><a href="#"><span uk-pagination-next></span></a></li>-->
+                <!--                </ul>-->
 
             </div>
             <!-- footer
@@ -567,8 +567,8 @@
 <script src="assets/js/main.js"></script>
 <!--热门电影Ajax-->
 <script>
-    function showMovieDetail(nId){
-        localStorage.setItem('movieId',nId);
+    function showMovieDetail(nId) {
+        localStorage.setItem('movieId', nId);
         $.ajax({
             url: 'http://localhost:8080/getMovieDetail?id=' + nId,
             type: 'get',
@@ -586,14 +586,17 @@
             url: "http://localhost:8080/findHotMovies",
             dataType: 'json', //数据格式
             type: "get",//请求方式
+            xhrFields: {
+                withCredentials: true
+            },
             success: function (data) {
                 var tt = data.data;
                 console.log(tt);
                 var str1 = "";
                 for (var i = 0; i < tt.length; i++) {
                     var cCover = tt[i].cmovieCover;
-                    var nId=tt[i].nid;
-                    str1 += "<li><a onclick='showMovieDetail(\""+nId+"\")' class=\"video-post\">" +
+                    var nId = tt[i].nid;
+                    str1 += "<li><a onclick='showMovieDetail(\"" + nId + "\")' class=\"video-post\">" +
                         "<div class=\"video-post-thumbnail\">" +
                         "<span class=\"video-post-count\">" + tt[i].nviews + "</span>" +
                         "<span class=\"video-post-time\">" + tt[i].nfilmLength + "分钟" + "</span>" +
@@ -638,14 +641,17 @@
             url: "http://localhost:8080/findNewMovies",
             dataType: 'json', //数据格式
             type: "get",//请求方式
+            xhrFields: {
+                withCredentials: true
+            },
             success: function (data) {
                 var tt = data.data;
                 console.log(tt);
                 var str1 = "";
                 for (var i = 0; i < tt.length; i++) {
                     var cCover = tt[i].cmovieCover;
-                    var nId=tt[i].nid;
-                    str1 += "<li><a onclick='showMovieDetail(\""+nId+"\")' class=\"video-post\">" +
+                    var nId = tt[i].nid;
+                    str1 += "<li><a onclick='showMovieDetail(\"" + nId + "\")' class=\"video-post\">" +
                         "<div class=\"video-post-thumbnail\">" +
                         "<span class=\"video-post-count\">" + tt[i].nviews + "</span>" +
                         "<span class=\"video-post-time\">" + tt[i].nfilmLength + "分钟" + "</span>" +
@@ -690,6 +696,9 @@
             url: "http://localhost:8080/showMoviesList",
             dataType: 'json', //数据格式
             type: "get",//请求方式
+            xhrFields: {
+                withCredentials: true
+            },
             success: function (data) {
                 var tt = data.data;
                 console.log(tt);
@@ -697,9 +706,9 @@
                 var str1 = "";
                 for (var i = 0; i < tt.length; i++) {
                     var cCover = tt[i].cmovieCover;
-                    var nId=tt[i].nid;
-                    str1 += "<div>"+
-                        "<a onclick='showMovieDetail(\""+nId+"\")' class=\"video-post\">" +
+                    var nId = tt[i].nid;
+                    str1 += "<div>" +
+                        "<a onclick='showMovieDetail(\"" + nId + "\")' class=\"video-post\">" +
                         "<div class=\"video-post-thumbnail\">" +
                         "<span class=\"video-post-count\">" + tt[i].nviews + "</span>" +
                         "<span class=\"video-post-time\">" + tt[i].nfilmLength + "分钟" + "</span>" +
@@ -724,7 +733,7 @@
                         "<h3>" + tt[i].cname + " </h3>" +
 
                         "</div>" +
-                        "</a>"+
+                        "</a>" +
                         "</div>"
 
                 }
@@ -736,6 +745,28 @@
                 console.log(arg1);
             }
         })
+
+
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "http://localhost:8080/showUserDetail",//后台请求的数据
+            dataType: 'json', //数据格式
+            type: "get",//请求方式
+            async: true,//是否异步请求
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (data) {
+
+                var dd = data.data;
+             localStorage.setItem("userId",dd.nid);
+            }
+        })
+
+
     })
 </script>
 <style>
@@ -747,10 +778,7 @@
         overflow: hidden;
     }
 </style>
-<!--<div class="copyrights">-->
-<!--    Collect from <a href="http://www.cssmoban.com/" title="网站模板">模板之家</a>-->
-<!--    <a href="https://www.chazidian.com/" title="查字典">查字典</a>-->
-<!--</div>-->
+
 </body>
 
 </html>

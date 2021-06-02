@@ -20,6 +20,10 @@ public interface UserService {
 
     int updateByPrimaryKey(User record);
 
+    int updateScore(int userId, int addScore);
+
+    int updateRole(int userId);
+
     SverResponse<User> doLogin(String account, String password);
 
     SverResponse<User> getUserDetail(int id);

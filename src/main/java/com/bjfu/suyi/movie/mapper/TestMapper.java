@@ -26,6 +26,6 @@ public interface TestMapper {
      * @return
      */
     @ResultMap("BaseResultMap")
-    @Select( "select * from test order by rand() limit 5")
+    @Select( "select * from test order by rand() limit 1")
     List<Test> showTestList();
 }

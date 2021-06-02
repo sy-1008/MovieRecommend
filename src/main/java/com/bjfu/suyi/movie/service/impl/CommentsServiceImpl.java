@@ -8,9 +8,10 @@ import com.bjfu.suyi.movie.model.Comments;
 import com.bjfu.suyi.movie.service.CommentsService;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
-public class CommentsServiceImpl implements CommentsService{
+public class CommentsServiceImpl implements CommentsService {
 
     @Resource
     private CommentsMapper commentsMapper;
@@ -46,7 +47,7 @@ public class CommentsServiceImpl implements CommentsService{
     }
 
     @Override
-    public SverResponse<String> createComments(Integer userId,Integer movieId, Comments comments) {
+    public SverResponse<String> createComments(Integer userId, Integer movieId, Comments comments) {
         comments.setNPowerId(userId);
         comments.setNMovieId(movieId);
         Date date = new Date();
@@ -60,7 +61,13 @@ public class CommentsServiceImpl implements CommentsService{
 
     @Override
     public SverResponse<String> deleteComment(int uid, int mid) {
-        commentsMapper.deleteComment(uid,mid);
+        commentsMapper.deleteComment(uid, mid);
         return SverResponse.createRespBySuccess("评论删除成功");
     }
+
+    @Override
+    public SverResponse<List<Comments>> showCommentListAll() {
+        return SverResponse.createRespBySuccess(commentsMapper.showCommentListAll());
+    }
 }
+

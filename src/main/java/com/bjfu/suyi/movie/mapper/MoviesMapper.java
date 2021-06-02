@@ -1,12 +1,7 @@
 package com.bjfu.suyi.movie.mapper;
 
 import com.bjfu.suyi.movie.model.Movies;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-
-import java.util.Date;
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;import org.apache.ibatis.annotations.ResultMap;import org.apache.ibatis.annotations.Select;import java.util.List;
 
 @Mapper
 public interface MoviesMapper {
@@ -40,7 +35,6 @@ public interface MoviesMapper {
     @Select("select * from movies where n_is_hot=1")
     List<Movies> findHotMovies();
 
-
     @ResultMap("BaseResultMap")
     @Select("select * from movies where c_name LIKE '%${searchName}%' ")
     List<Movies> showMoviesBySearchName(String searchName);
@@ -62,24 +56,23 @@ public interface MoviesMapper {
             "AND c_name LIKE '%${searchName}%'",
             "</if>",
             "</script>"})
-
     List<Movies> multiconditionalSearch(String searchName, String movieType, String movieLanguage);
 
     /**
      * 最新上线
+     *
      * @return
      */
     @ResultMap("BaseResultMap")
     @Select("select * from movies where d_release_date>='2021-1-01' ")
     List<Movies> findNewMovies();
+
     /**
      * 分类查看
+     *
      * @return
      */
     @ResultMap("BaseResultMap")
     @Select("select * from movies where c_movie_type=#{type} ")
     List<Movies> getMovieListByType(String type);
-
-
-
 }

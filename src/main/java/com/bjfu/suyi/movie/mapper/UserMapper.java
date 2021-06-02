@@ -1,7 +1,10 @@
 package com.bjfu.suyi.movie.mapper;
 
 import com.bjfu.suyi.movie.model.User;
-import org.apache.ibatis.annotations.Mapper;import org.apache.ibatis.annotations.ResultMap;import org.apache.ibatis.annotations.Select;import java.util.List;
+import org.apache.ibatis.annotations.Mapper;import org.apache.ibatis.annotations.ResultMap;import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
+import java.util.List;
 
 @Mapper
 public interface UserMapper {
@@ -16,6 +19,13 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+    @ResultMap("BaseResultMap")
+    @Update("update user set n_score=n_score+#{addScore} where n_id=#{userId}")
+    int updateScore(int userId,int addScore);
+    @ResultMap("BaseResultMap")
+    @Update("update user set role=2 where n_id=#{userId}")
+    int updateRole(int userId);
+
 
     @Select("select count(1) from user where c_username=#{account}")
     int checkUserByAccount(String account);
