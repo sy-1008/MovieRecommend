@@ -1,7 +1,9 @@
 package com.bjfu.suyi.movie.controller;
 
 import com.bjfu.suyi.movie.common.pojo.SverResponse;
+import com.bjfu.suyi.movie.model.Star;
 import com.bjfu.suyi.movie.model.User;
+import com.bjfu.suyi.movie.service.StarService;
 import com.bjfu.suyi.movie.service.UserService;
 import com.bjfu.suyi.movie.utils.ConstUtil;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,8 @@ import java.util.List;
 public class UserController {
     @Resource
     UserService userService;
+    @Resource
+    StarService starService;
 
     /**
      * 前台用户登录
@@ -132,5 +136,24 @@ public class UserController {
 
         User u=userService.selectByPrimaryKey(LoginUserId);
         return SverResponse.createRespBySuccess(u);
+    }
+
+    /**
+     * 高级用户评星
+     * @param userId
+     * @param movieId
+     * @param rate
+     * @return
+     */
+    @RequestMapping(value = "/doRate", method = RequestMethod.GET)
+    @CrossOrigin
+    public int doRate(@RequestParam("userId") int userId,
+                                       @RequestParam("movieId") int movieId,
+                                       @RequestParam("rate") double rate){
+        Star s=new Star();
+        s.setNPowerId(userId);
+        s.setNMovieId(movieId);
+        s.setNStar(rate);
+        return starService.insert(s);
     }
 }

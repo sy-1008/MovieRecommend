@@ -21,5 +21,9 @@ public interface TestService{
     int updateByPrimaryKey(Test record);
 
     SverResponse<List<Test>> showTestList();
+
     int checkanswer(int testId,String userAnswer);
+
+    Test selectByCque(String cque);
+
 }

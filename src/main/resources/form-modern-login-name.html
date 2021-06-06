@@ -161,6 +161,7 @@
             },
             success: function (data) {
                 data = JSON.parse(data);
+                localStorage.setItem("userIdTJ",data.data.nid);
                 var code = data.status
                 var role = $('#roleradio input[name="radio2"]:checked ').val();
                 if (code === 0) {

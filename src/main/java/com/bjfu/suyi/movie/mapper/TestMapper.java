@@ -28,4 +28,8 @@ public interface TestMapper {
     @ResultMap("BaseResultMap")
     @Select( "select * from test order by rand() limit 1")
     List<Test> showTestList();
+
+    @ResultMap("BaseResultMap")
+    @Select( "select * from test where movie.test.c_ques=#{cque}")
+    Test selectByCque(String cque);
 }

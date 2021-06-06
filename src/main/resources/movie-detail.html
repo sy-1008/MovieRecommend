@@ -246,38 +246,23 @@
                         <div class="uk-flex uk-flex-between">
 
                             <div class="video-info-details">
-
+                                <label>上映日期：</label>
                                 <span id="date"></span>
                             </div>
                             <div>
-
+                                <label>类型：</label>
+                                <span id="cType"></span>
+                            </div>
+                            <div>
+                                <label>语言：</label>
                                 <span id="language"></span>
+                            </div>
+                            <div>
+                                <label>评分：</label>
+                                <span id="fmovieScore"></span>
                             </div>
                         </div>
 
-
-                        <!--                        <div class="uk-flex uk-flex-between uk-flex-middle" uk-grid>-->
-                        <!--                            <div class="user-details-card uk-width-expand">-->
-                        <!--                                <a href="single-channal.html" class="uk-flex">-->
-                        <!--                                    <div class="user-details-card-avatar">-->
-                        <!--                                        <img src="assets/images/avatars/avatar-2.jpg" alt="">-->
-                        <!--                                    </div>-->
-                        <!--                                    <div class="user-details-card-name">-->
-                        <!--                                        Stella Johnson <span> Published on Oct 22, 2017 </span>-->
-                        <!--                                    </div>-->
-                        <!--                                </a>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="uk-width-auto uk-flex">-->
-
-
-                        <!--                                <div class="btn-subscribe">-->
-                        <!--                                    <a href="#" class="button danger"> <i class="icon-feather-plus"></i>-->
-                        <!--                                        subscribe </a>-->
-                        <!--                                    <span class="subs-amount">1200</span>-->
-                        <!--                                </div>-->
-
-                        <!--                            </div>-->
-                        <!--                        </div>-->
 
                         <hr class="mt-0 mb-2">
 
@@ -288,21 +273,21 @@
 
                         <div class="about-ch-sec mb-lg-6">
 
-                            <div class="abt-rw">
-                                <h2>信息</h2>
-                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    fugiat nulla pariatur </p>
-                            </div>
-                            <div>
-                                <h2>类型</h2>
-                                <ul>
-                                    <li id="cType"></li>
+<!--                            <div class="abt-rw">-->
+<!--                                <h2>信息</h2>-->
+<!--                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor-->
+<!--                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis-->
+<!--                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.-->
+<!--                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu-->
+<!--                                    fugiat nulla pariatur </p>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <h2>类型</h2>-->
+<!--                                <ul>-->
+<!--                                    <li id="cType"></li>-->
 
-                                </ul>
-                            </div>
+<!--                                </ul>-->
+<!--                            </div>-->
                         </div>
 
 
@@ -370,44 +355,9 @@
 
 
                     </div>
-                    <div class="video-list-small uk-child-width-1-1@m uk-child-width-1-2@s" uk-grid>
+                    <div id="userRecommend" class="video-list-small uk-child-width-1-1@m uk-child-width-1-2@s" uk-grid>
 
 
-                        <div>
-                            <a href="#" class="video-post video-post-list">
-                                <!-- Blog Post Thumbnail -->
-                                <div class="video-post-thumbnail">
-                                    <span class="video-post-count">1.4M</span>
-                                    <span class="video-post-time">23:00</span>
-                                    <span class="play-btn-trigger"></span>
-
-                                    <img src="assets/images/video-thumbal/2.png" alt="">
-
-                                </div>
-
-                                <!-- Blog Post Content -->
-                                <!--                                <div class="video-post-content">-->
-                                <!--                                    <h3> 电影名 </h3>-->
-                                <!--                                    <img src="assets/images/avatars/avatar-3.jpg" alt="">-->
-                                <!--                                    <span class="video-post-user">Jonathan Madano</span>-->
-                                <!--                                    <span class="video-post-views">531k views</span>-->
-                                <!--                                    <span class="video-post-date"> 2 weeks ago </span>-->
-                                <!--                                    &lt;!&ndash; option menu &ndash;&gt;-->
-                                <!--                                    <span class="btn-option">-->
-                                <!--                                            <i class="icon-feather-more-vertical"></i>-->
-                                <!--                                        </span>-->
-                                <!--                                    <div class="dropdown-option-nav"-->
-                                <!--                                         uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">-->
-                                <!--                                        <ul>-->
-                                <!--                                            <li> <span> <i class="uil-history"></i> Watch Later</span> </li>-->
-                                <!--                                            <li> <span> <i class="uil-bookmark"></i> Add Bookmark</span> </li>-->
-                                <!--                                            <li> <span> <i class="uil-share-alt"></i> Share Your Friends</span>-->
-                                <!--                                            </li>-->
-                                <!--                                        </ul>-->
-                                <!--                                    </div>-->
-                                <!--                                </div>-->
-                            </a>
-                        </div>
 
 
                     </div>
@@ -518,6 +468,7 @@
                 $("#cType").html(dd.cmovieType);
                 $("#date").html(dd.dreleaseDate);
                 $("#language").html(dd.cmovieLanguage);
+                $("#fmovieScore").html(dd.fmovieScore+ ' 分');
                 $('#video').attr('src', dd.cvideo);
 
             },
@@ -646,9 +597,97 @@
         $("#getRate").click(function(){
             console.log(instance);
             // 打印出instance可知instance.config.value即是评分值
-            layer.msg("电影评级："+instance.config.value);
+            // layer.msg("电影评级："+instance.config.value);
+
+            var movieId = localStorage.getItem("movieId");
+            var userId = localStorage.getItem("userId");
+            $.ajax({
+                url: "http://localhost:8080/doRate?userId="+userId+"&movieId="+movieId+"&rate="+instance.config.value,//后台请求的数据
+                dataType: 'json', //数据格式
+                type: "get",//请求方式
+                async: true,//是否异步请求
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function () {
+                    layer.msg("电影评级："+instance.config.value);
+                }
+            })
         });
     });
+</script>
+<!--查看电影详情-->
+<script>
+    function showMovieDetail(nId) {
+        localStorage.setItem('movieId', nId);
+        $.ajax({
+            url: 'http://localhost:8080/getMovieDetail?id=' + nId,
+            type: 'get',
+            dataType: 'text',
+            async: true,//是否异步请求
+            success: function () {
+                location.href = 'movie-detail.html';
+            }
+        })
+    }
+</script>
+<!--基于内容推荐-->
+<script>
+    $(document).ready(function () {
+        var recommenduser = localStorage.getItem("userIdTJ");
+        var   itemId=localStorage.getItem('movieId');
+        var num=5;
+        console.log(recommenduser)
+        $.ajax({
+            url: "http://localhost:8080/mahoutItem?userId=" + recommenduser+"&itemId="+itemId+"&num="+num,
+            dataType: 'json', //数据格式
+            type: "get",//请求方式
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (data) {
+                console.log(data)
+                var str1="";
+                for (var i = 0; i < data.length; i++) {
+                    $.ajax({
+                        url: "http://localhost:8080/getMovieDetail?id=" + data[i].itemID,
+                        dataType: 'json', //数据格式
+                        type: "get",//请求方式
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        success: function (data) {
+                            var tt = data.data;
+                            console.log(tt);
+                            var cCover = tt.cmovieCover;
+                            var nId = tt.nid;
+                            str1 +="<div>"+
+                                "  <a onclick='showMovieDetail(\"" + nId + "\")' class=\"video-post video-post-list\">"+
+                            "<div class=\"video-post-thumbnail\">"+
+                                "<span class=\"video-post-count\">" + tt.nviews + "</span>" +
+                                "<span class=\"video-post-time\">" + tt.nfilmLength + "分钟" + "</span>" +
+                                "<span class=\"play-btn-trigger\"></span>" +
+                                "<img src='" + cCover + "' referrerPolicy=\"no-referrer\">" +
+                            "</div>"+
+                            "</a>"+
+                            "</div>";
+                            userRecommend.innerHTML = str1;
+                        },
+                        error: function (arg1) {
+                            alert("加载数据失败");
+                            console.log(arg1);
+                        }
+                    })
+
+                }
+
+            },
+            error: function (arg1) {
+                alert("加载数据失败");
+                console.log(arg1);
+            }
+        })
+    })
 </script>
 </body>
 

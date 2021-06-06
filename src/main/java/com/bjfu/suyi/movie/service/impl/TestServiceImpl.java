@@ -1,6 +1,7 @@
 package com.bjfu.suyi.movie.service.impl;
 
 import com.bjfu.suyi.movie.common.pojo.SverResponse;
+import com.bjfu.suyi.movie.mapper.PowertestMapper;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import com.bjfu.suyi.movie.mapper.TestMapper;
@@ -14,6 +15,9 @@ public class TestServiceImpl implements TestService{
 
     @Resource
     private TestMapper testMapper;
+
+    @Resource
+    private PowertestMapper powertestMapper;
 
     @Override
     public int deleteByPrimaryKey(Integer nId) {
@@ -50,6 +54,8 @@ public class TestServiceImpl implements TestService{
         return SverResponse.createRespBySuccess(testMapper.showTestList());
     }
 
+
+
     @Override
     public int checkanswer(int testId, String userAnswer) {
         Test test=testMapper.selectByPrimaryKey(testId);
@@ -58,6 +64,11 @@ public class TestServiceImpl implements TestService{
         }
         else
             return 0;
+    }
+
+    @Override
+    public Test selectByCque(String cque) {
+        return testMapper.selectByCque(cque);
     }
 
 }
